@@ -1,0 +1,11 @@
+<a [routerLink]="[songId]" class="list-group-item clearfix" routerLinkActive="active">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{song.name}}</h4>
+    <p class="list-group-item-text">{{song.artist}}</p>
+  </div>
+  <span class="pull-right">
+      <img class="img-responsive"
+           src="{{song.imagePath}}"
+           style="max-height: 50px;"/>
+  </span>
+</a>

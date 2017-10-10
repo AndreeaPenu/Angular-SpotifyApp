@@ -1,0 +1,24 @@
+<br>
+<div [@flyIn]="state">
+  <div class="row">
+    <div class="col-xs-12">
+      <img src="{{selectedSong?.imagePath}}" alt="" class="img-responsive">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{selectedSong?.name}}</h1>
+    </div>
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onEdit()">Edit</button>
+      <button class="btn btn-danger" (click)="onDelete()">Delete</button>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <p>{{selectedSong?.artist}}</p>
+    </div>
+  </div>
+
+</div>

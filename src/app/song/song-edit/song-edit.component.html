@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="songForm" (ngSubmit)="onSubmit()">
+      <br>
+      <div class="row">
+        <div class="col-xs-12">
+         <button type="submit" class="btn btn-success"  [disabled]="!songForm.valid">Save</button>
+          <a class="btn btn-danger" (click)="onCancel()">Cancel</a>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group" [ngClass]="{'has-error':!songForm.controls['name'].valid}">
+            <label for="name">Title</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              formControlName="name"
+              required
+              minlength="3"
+              maxlength="30"
+              (blur)="onAnimate()"
+              [formControl]="songForm.controls['name']"
+            >
+            <div [@shake]="state" *ngIf="songForm.controls['name'].hasError('required') && songForm.controls['name'].touched" class="alert alert-danger">You must include a title.</div>
+            <div [@shake]="state" *ngIf="songForm.controls['name'].hasError('minlength') && songForm.controls['name'].touched" class="alert alert-danger">Your title must be at least 3 characters long.</div>
+            <div [@shake]="state" *ngIf="songForm.controls['name'].hasError('maxlength') && songForm.controls['name'].touched" class="alert alert-danger">Your title cannot exceed 30 characters.</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group"  [ngClass]="{'has-error':!songForm.controls['imagePath'].valid}">
+            <label for="image-url">Image Url</label>
+            <input
+              type="text"
+              id="image-url"
+              class="form-control"
+              formControlName="imagePath"
+              #imageUrl
+              required
+              pattern="https?://.+"
+              (blur)='onAnimate2()'
+              [formControl]="songForm.controls['imagePath']"
+            >
+            <div [@shake]="state2" *ngIf="songForm.controls['imagePath'].hasError('required') && songForm.controls['imagePath'].touched" class="alert alert-danger">The image must be an URL. example: "https://randomimage.com" </div>
+            <div [@shake]="state2" *ngIf="songForm.controls['imagePath'].hasError('pattern') && songForm.controls['imagePath'].touched" class="alert alert-danger">The image must be an URL. example: "https://randomimage.com" </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="img">
+            <img [src]="imageUrl.value">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group" [ngClass]="{'has-error':!songForm.controls['artist'].valid}">
+            <label for="artist">Artist</label>
+            <input
+              type="text"
+              id="artist"
+              class="form-control"
+              formControlName="artist"
+              #artist
+              required
+              (blur)='onAnimate3()'
+              [formControl]="songForm.controls['artist']"
+            >
+            <div [@shake]="state3" *ngIf="songForm.controls['artist'].hasError('required') && songForm.controls['artist'].touched" class="alert alert-danger">You must include an artist.</div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

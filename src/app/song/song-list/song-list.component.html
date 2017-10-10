@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-xs-12">
+  <h3>My Playlist</h3>
+    <a (click)="onFetch()"  class="btn btn-secondary floatRight"> Fetch Songs</a>
+    <a (click)="onStore()"  class="btn btn-secondary floatRight"> Store Songs</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <app-song-item *ngFor="let song of songs; let i = index" [song]="song" [songId]="i"></app-song-item>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <a [@jumping]="state" (click)="onJump()" class="btn btn-success"  [routerLink]="['new']">+ New Song</a>
+  </div>
+</div>
+
